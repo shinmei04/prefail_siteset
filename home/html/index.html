@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prerendering Loading Demo!</title>
+</head>
+
+<body>
+  <h1>Prerendering Loading Demo!</h1>
+  <p>This is a demo of the Speculation Rules API.</p>
+  <ul>
+    <li>
+      <a href="https://victim.lab-ish.com/"id="link-light">Go to Victim Page</a>
+      <a href="https://depth.lab-ish.com/"id="link-medium">Go to Depth Page</a>
+      <a href="https://attack.lab-ish.com/"id="link-heavy">Go to Attack Page</a>
+    </li>
+  </ul>
+<script type="speculationrules"> 
+    {
+      "prerender": [
+        {
+          "source": "list",
+          "urls": [
+          "https://attack.lab-ish.com/", 
+          "https://victim.lab-ish.com/"],
+          "eagerness": "immediate"
+        }
+      ]
+    }
+  </script>
+</body>
+
+</html>

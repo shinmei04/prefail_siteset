@@ -1,0 +1,3 @@
+# 実験用のダミー画像を除外 (Medium & Heavy)
+depth/html/assets/medium_*.jpg
+attack/html/assets/heavy_*.jpg

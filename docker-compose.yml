@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  niimi_home:
+    image: nginx:latest
+    restart: unless-stopped
+    pull_policy: always
+    networks:
+      - internal
+      - caddy
+    volumes:
+      - $PWD/home/html:/var/www/html:ro
+      - $PWD/home/nginx.conf:/etc/nginx/conf.d/default.conf
+    environment:
+      - TZ
+
+  niimi_attack:
+    image: nginx:latest
+    restart: unless-stopped
+    networks:
+      - internal
+      - caddy
+    volumes:
+      - $PWD/attack/html:/var/www/html:ro
+      - $PWD/attack/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    environment:
+      - TZ
+
+  niimi_victim:
+    image: nginx:latest
+    restart: unless-stopped
+    networks:
+      - internal
+      - caddy
+    volumes:
+      - $PWD/victim/html:/var/www/html:ro
+      - $PWD/victim/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    environment:
+      - TZ
+
+  niimi_depth:
+    image: nginx:latest
+    restart: unless-stopped
+    networks:
+      - internal
+      - caddy
+    volumes:
+      - $PWD/depth/html:/var/www/html:ro
+      - $PWD/depth/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    environment:
+      - TZ
+
+networks:
+  internal:
+    driver: bridge
+    internal: true
+  caddy:
+    external: true
