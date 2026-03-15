@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <title>Heavy Page (~20MB)</title>
-    <link rel="stylesheet" href="assets/app-light.css">
+    <link rel="stylesheet" href="assets/app-heavy.css">
     <style>
-        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
-        img { width: 100%; height: auto; border: 1px solid #ccc; }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
     </style>
 </head>
+
 <body>
     <h1>Heavy Page (~10MB)</h1>
+    <p id="comm-status">comm: running</p>
     <div class="gallery">
         <img src="assets/heavy_1.jpg" loading="eager">
         <img src="assets/heavy_2.jpg" loading="eager">
@@ -19,6 +31,7 @@
         <img src="assets/heavy_5.jpg" loading="eager">
 
     </div>
-    <script src="assets/app-light.js"></script>
+    <script src="assets/app-heavy.js"></script>
 </body>
+
 </html>

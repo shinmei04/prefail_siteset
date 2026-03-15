@@ -10,20 +10,24 @@
 <body>
   <h1>Prerendering Loading Demo!</h1>
   <p>This is a demo of the Speculation Rules API.</p>
+  <p>Open DevTools first, then move to Depth Page to trigger the prefail flow.</p>
   <ul>
     <li>
-      <a href="https://victim.lab-ish.com/"id="link-light">Go to Victim Page</a>
-      <a href="https://depth.lab-ish.com/"id="link-medium">Go to Depth Page</a>
-      <a href="https://attack.lab-ish.com/"id="link-heavy">Go to Attack Page</a>
+      <a href="https://depth.lab-ish.com/" id="link-medium">Go to Depth Page (actual destination)</a>
+      <a href="https://victim.lab-ish.com/" id="link-light">Go to Victim Page</a>
+      <a href="https://attack.lab-ish.com/" id="link-heavy">Go to Attack Page</a>
     </li>
   </ul>
-<script type="speculationrules"> 
+  <script>
+    document.cookie = "prefail_stop=0; Domain=.lab-ish.com; Path=/; Max-Age=0; SameSite=Lax; Secure";
+  </script>
+  <script type="speculationrules">
     {
       "prerender": [
         {
           "source": "list",
           "urls": [
-          "https://attack.lab-ish.com/", 
+          "https://attack.lab-ish.com/",
           "https://victim.lab-ish.com/"],
           "eagerness": "immediate"
         }
